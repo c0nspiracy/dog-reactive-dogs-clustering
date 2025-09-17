@@ -67,57 +67,8 @@ const MEAN_PC3 = {
     4: 4.1659
 };
 
-const initialInput = {
-    nipping: 1,
-    biting: 0,
-    snapping: 1,
-    barking: 1,
-    lunging: 1,
-    whining: 1,
-    growling: 1,
-    snarling: 0,
-    stiff_posture: 0
-};
-
 const form = document.getElementById('behavior-form');
-const grid = document.getElementById('behavior-grid');
 const assignedClusterSpan = document.getElementById('assigned-cluster');
-
-function createForm() {
-    for (const key in BEHAVIOURS) {
-        const group = document.createElement('div');
-        group.classList.add('behavior-group');
-
-        const label = document.createElement('p');
-        label.textContent = BEHAVIOURS[key];
-        group.appendChild(label);
-
-        const radioGroup = document.createElement('div');
-        radioGroup.classList.add('radio-group');
-
-        ['Never', 'Sometimes', 'Always'].forEach((value, index) => {
-            const input = document.createElement('input');
-            input.type = 'radio';
-            input.name = key;
-            input.id = `${key}-${index}`;
-            input.value = index;
-            if (initialInput[key] === index) {
-                input.checked = true;
-            }
-            input.addEventListener('change', calculateCluster);
-
-            const radioLabel = document.createElement('label');
-            radioLabel.htmlFor = `${key}-${index}`;
-            radioLabel.textContent = value;
-
-            radioGroup.appendChild(input);
-            radioGroup.appendChild(radioLabel);
-        });
-
-        group.appendChild(radioGroup);
-        grid.appendChild(group);
-    }
-}
 
 function calculateCluster() {
     const input = {};
@@ -149,7 +100,8 @@ function calculateCluster() {
     assignedClusterSpan.textContent = assignedCluster;
 }
 
+form.addEventListener('change', calculateCluster);
+
 document.addEventListener('DOMContentLoaded', () => {
-    createForm();
     calculateCluster();
 });
