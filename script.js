@@ -69,6 +69,17 @@ const MEAN_PC3 = {
 
 const form = document.getElementById('behavior-form');
 const assignedClusterSpan = document.getElementById('assigned-cluster');
+const resetButton = document.getElementById('reset-button');
+
+function resetForm() {
+    for (const key in BEHAVIOURS) {
+        const neverRadio = document.getElementById(`${key}-0`);
+        if (neverRadio) {
+            neverRadio.checked = true;
+        }
+    }
+    calculateCluster();
+}
 
 function calculateCluster() {
     const input = {};
@@ -101,6 +112,7 @@ function calculateCluster() {
 }
 
 form.addEventListener('change', calculateCluster);
+resetButton.addEventListener('click', resetForm);
 
 document.addEventListener('DOMContentLoaded', () => {
     calculateCluster();
