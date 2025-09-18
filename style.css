@@ -14,7 +14,7 @@ body {
     width: 100%;
 }
 
-.intro-header {
+.card {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -24,40 +24,21 @@ body {
     margin-bottom: 20px;
 }
 
-.intro-header h1 {
+.card h1 {
     text-align: center;
     color: #1c1e21;
     margin-bottom: 20px;
 }
 
-.intro-header p {
+.card p {
     color: #333;
     line-height: 1.6;
     margin-bottom: 15px;
     text-align: left;
 }
 
-.intro-header p:last-child {
+.card p:last-child {
     margin-bottom: 0;
-}
-
-.container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 100%;
-}
-
-.form-container {
-    margin-bottom: 20px;
-}
-
-h1 {
-    text-align: center;
-    color: #1c1e21;
-    margin-bottom: 20px;
 }
 
 .grid-container {
@@ -104,9 +85,9 @@ h1 {
 #reset-button {
     margin-top: 15px;
     padding: 10px 20px;
-    border: 1px solid #007bff;
+    border: 1px solid #dc3545;
     background-color: transparent;
-    color: #007bff;
+    color: #dc3545;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
@@ -115,12 +96,11 @@ h1 {
 }
 
 #reset-button:hover {
-    background-color: #007bff;
+    background-color: #dc3545;
     color: #fff;
 }
 
-.cluster-info-container {
-}
+
 
 .cluster-info {
     display: none;
@@ -143,10 +123,10 @@ h1 {
     margin-bottom: 10px;
 }
 
-.intro-header ul {
+.card ul {
     padding-left: 20px;
 }
 
-.intro-header ul li {
+.card ul li {
     margin-bottom: 10px;
 }

@@ -69,7 +69,7 @@ const MEAN_PC3 = {
 
 const form = document.getElementById('behavior-form');
 const resetButton = document.getElementById('reset-button');
-const clusterInfoContainer = document.querySelector('.cluster-info-container');
+
 
 function showClusterInfo(cluster) {
     // Hide all cluster info sections
