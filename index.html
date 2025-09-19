@@ -3,120 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog Behavior Cluster Analysis</title>
+    <title>What cluster does your dog reactive dog (DRD) fall into?</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Dog Behavior Cluster Analysis</h1>
-        <form id="behavior-form">
-            <div class="grid-container" id="behavior-grid">
-                <div class="behavior-group">
-                    <p>Nipping</p>
-                    <div class="radio-group">
-                        <input type="radio" name="nipping" id="nipping-0" value="0">
-                        <label for="nipping-0">Never</label>
-                        <input type="radio" name="nipping" id="nipping-1" value="1" checked>
-                        <label for="nipping-1">Sometimes</label>
-                        <input type="radio" name="nipping" id="nipping-2" value="2">
-                        <label for="nipping-2">Always</label>
+    <main class="content">
+        <header class="card">
+            <h1>What cluster does your dog reactive dog (DRD) fall into?</h1>
+            <p>This is an owner-friendly screening tool helps you estimate your dog’s likely <strong>cluster type</strong> based on the frequency of nine key reactive behaviours.</p>
+            <p>It provides some basic guidance on what this means for risk and where to focus training.</p>
+            <p><strong>Please note:</strong> this tool does not replace professional behavioural assessment or advice, and we recommend consulting a veterinary behaviourist or clinical animal behaviourist before making management or training decisions.</p>
+            <ul>
+                <li>Our research shows that DRDs can be grouped into one of 4 clusters reflecting different styles of responding, potentially shaped by rearing environment, motivation, learning history, and thresholds for reactivity.</li>
+                <li>Knowing your dog’s cluster can help you better understand their risk of escalation and where to focus risk management and training to reduce the associated risk of harm.</li>
+                <li>Professional behavioural support is strongly recommended for dog reactive dogs, especially those that fall into clusters 3 or 4.</li>
+            </ul>
+        </header>
+        <div class="card">
+            <form id="behavior-form">
+                <h2>Rate your dog’s reactive behaviours</h2>
+                <p>For each behaviour, please rate how often your dog shows it when reacting to other dogs:</p>
+                <div class="grid-container" id="behavior-grid">
+                    <div class="behavior-group">
+                        <p>Nipping</p>
+                        <div class="radio-group">
+                            <input type="radio" name="nipping" id="nipping-0" value="0">
+                            <label for="nipping-0">Never</label>
+                            <input type="radio" name="nipping" id="nipping-1" value="1" checked>
+                            <label for="nipping-1">Sometimes</label>
+                            <input type="radio" name="nipping" id="nipping-2" value="2">
+                            <label for="nipping-2">Often</label>
+                        </div>
                     </div>
-                </div>
-                <div class="behavior-group">
-                    <p>Biting</p>
-                    <div class="radio-group">
-                        <input type="radio" name="biting" id="biting-0" value="0" checked>
-                        <label for="biting-0">Never</label>
-                        <input type="radio" name="biting" id="biting-1" value="1">
-                        <label for="biting-1">Sometimes</label>
-                        <input type="radio" name="biting" id="biting-2" value="2">
-                        <label for="biting-2">Always</label>
+                    <div class="behavior-group">
+                        <p>Biting</p>
+                        <div class="radio-group">
+                            <input type="radio" name="biting" id="biting-0" value="0" checked>
+                            <label for="biting-0">Never</label>
+                            <input type="radio" name="biting" id="biting-1" value="1">
+                            <label for="biting-1">Sometimes</label>
+                            <input type="radio" name="biting" id="biting-2" value="2">
+                            <label for="biting-2">Often</label>
+                        </div>
                     </div>
-                </div>
-                <div class="behavior-group">
-                    <p>Snapping</p>
-                    <div class="radio-group">
-                        <input type="radio" name="snapping" id="snapping-0" value="0">
-                        <label for="snapping-0">Never</label>
-                        <input type="radio" name="snapping" id="snapping-1" value="1" checked>
-                        <label for="snapping-1">Sometimes</label>
-                        <input type="radio" name="snapping" id="snapping-2" value="2">
-                        <label for="snapping-2">Always</label>
+                    <div class="behavior-group">
+                        <p>Snapping</p>
+                        <div class="radio-group">
+                            <input type="radio" name="snapping" id="snapping-0" value="0">
+                            <label for="snapping-0">Never</label>
+                            <input type="radio" name="snapping" id="snapping-1" value="1" checked>
+                            <label for="snapping-1">Sometimes</label>
+                            <input type="radio" name="snapping" id="snapping-2" value="2">
+                            <label for="snapping-2">Often</label>
+                        </div>
                     </div>
-                </div>
-                <div class="behavior-group">
-                    <p>Barking</p>
-                    <div class="radio-group">
-                        <input type="radio" name="barking" id="barking-0" value="0">
-                        <label for="barking-0">Never</label>
-                        <input type="radio" name="barking" id="barking-1" value="1" checked>
-                        <label for="barking-1">Sometimes</label>
-                        <input type="radio" name="barking" id="barking-2" value="2">
-                        <label for="barking-2">Always</label>
+                    <div class="behavior-group">
+                        <p>Barking</p>
+                        <div class="radio-group">
+                            <input type="radio" name="barking" id="barking-0" value="0">
+                            <label for="barking-0">Never</label>
+                            <input type="radio" name="barking" id="barking-1" value="1" checked>
+                            <label for="barking-1">Sometimes</label>
+                            <input type="radio" name="barking" id="barking-2" value="2">
+                            <label for="barking-2">Often</label>
+                        </div>
                     </div>
-                </div>
-                <div class="behavior-group">
-                    <p>Lunging</p>
-                    <div class="radio-group">
-                        <input type="radio" name="lunging" id="lunging-0" value="0">
-                        <label for="lunging-0">Never</label>
-                        <input type="radio" name="lunging" id="lunging-1" value="1" checked>
-                        <label for="lunging-1">Sometimes</label>
-                        <input type="radio" name="lunging" id="lunging-2" value="2">
-                        <label for="lunging-2">Always</label>
+                    <div class="behavior-group">
+                        <p>Lunging</p>
+                        <div class="radio-group">
+                            <input type="radio" name="lunging" id="lunging-0" value="0">
+                            <label for="lunging-0">Never</label>
+                            <input type="radio" name="lunging" id="lunging-1" value="1" checked>
+                            <label for="lunging-1">Sometimes</label>
+                            <input type="radio" name="lunging" id="lunging-2" value="2">
+                            <label for="lunging-2">Often</label>
+                        </div>
                     </div>
-                </div>
-                <div class="behavior-group">
-                    <p>Whining</p>
-                    <div class="radio-group">
-                        <input type="radio" name="whining" id="whining-0" value="0">
-                        <label for="whining-0">Never</label>
-                        <input type="radio" name="whining" id="whining-1" value="1" checked>
-                        <label for="whining-1">Sometimes</label>
-                        <input type="radio" name="whining" id="whining-2" value="2">
-                        <label for="whining-2">Always</label>
+                    <div class="behavior-group">
+                        <p>Whining</p>
+                        <div class="radio-group">
+                            <input type="radio" name="whining" id="whining-0" value="0">
+                            <label for="whining-0">Never</label>
+                            <input type="radio" name="whining" id="whining-1" value="1" checked>
+                            <label for="whining-1">Sometimes</label>
+                            <input type="radio" name="whining" id="whining-2" value="2">
+                            <label for="whining-2">Often</label>
+                        </div>
                     </div>
-                </div>
-                <div class="behavior-group">
-                    <p>Growling</p>
-                    <div class="radio-group">
-                        <input type="radio" name="growling" id="growling-0" value="0">
-                        <label for="growling-0">Never</label>
-                        <input type="radio" name="growling" id="growling-1" value="1" checked>
-                        <label for="growling-1">Sometimes</label>
-                        <input type="radio" name="growling" id="growling-2" value="2">
-                        <label for="growling-2">Always</label>
+                    <div class="behavior-group">
+                        <p>Growling</p>
+                        <div class="radio-group">
+                            <input type="radio" name="growling" id="growling-0" value="0">
+                            <label for="growling-0">Never</label>
+                            <input type="radio" name="growling" id="growling-1" value="1" checked>
+                            <label for="growling-1">Sometimes</label>
+                            <input type="radio" name="growling" id="growling-2" value="2">
+                            <label for="growling-2">Often</label>
+                        </div>
                     </div>
-                </div>
-                <div class="behavior-group">
-                    <p>Snarling (lip curled up)</p>
-                    <div class="radio-group">
-                        <input type="radio" name="snarling" id="snarling-0" value="0" checked>
-                        <label for="snarling-0">Never</label>
-                        <input type="radio" name="snarling" id="snarling-1" value="1">
-                        <label for="snarling-1">Sometimes</label>
-                        <input type="radio" name="snarling" id="snarling-2" value="2">
-                        <label for="snarling-2">Always</label>
+                    <div class="behavior-group">
+                        <p>Snarling (lip curled up)</p>
+                        <div class="radio-group">
+                            <input type="radio" name="snarling" id="snarling-0" value="0" checked>
+                            <label for="snarling-0">Never</label>
+                            <input type="radio" name="snarling" id="snarling-1" value="1">
+                            <label for="snarling-1">Sometimes</label>
+                            <input type="radio" name="snarling" id="snarling-2" value="2">
+                            <label for="snarling-2">Often</label>
+                        </div>
                     </div>
-                </div>
-                <div class="behavior-group">
-                    <p>Stiff posture with raised hackles and intense staring</p>
-                    <div class="radio-group">
-                        <input type="radio" name="stiff_posture" id="stiff_posture-0" value="0" checked>
-                        <label for="stiff_posture-0">Never</label>
-                        <input type="radio" name="stiff_posture" id="stiff_posture-1" value="1">
-                        <label for="stiff_posture-1">Sometimes</label>
-                        <input type="radio" name="stiff_posture" id="stiff_posture-2" value="2">
-                        <label for="stiff_posture-2">Always</label>
+                    <div class="behavior-group">
+                        <p>Stiff posture with raised hackles and intense staring</p>
+                        <div class="radio-group">
+                            <input type="radio" name="stiff_posture" id="stiff_posture-0" value="0" checked>
+                            <label for="stiff_posture-0">Never</label>
+                            <input type="radio" name="stiff_posture" id="stiff_posture-1" value="1">
+                            <label for="stiff_posture-1">Sometimes</label>
+                            <input type="radio" name="stiff_posture" id="stiff_posture-2" value="2">
+                            <label for="stiff_posture-2">Often</label>
+                        </div>
                     </div>
+                    <button type="button" id="reset-button">Reset</button>
                 </div>
-            </div>
-        </form>
-        <div class="result-container">
-            <h2>Assigned Cluster: <span id="assigned-cluster"></span></h2>
-            <button type="button" id="reset-button">Reset</button>
+            </form>
         </div>
-    </div>
+        <div class="card">
+            <h2>Understanding Your Dog’s Cluster</h2>
+            <div id="cluster-1-info" class="cluster-info">
+                <h3>Cluster 1 (lower risk reactivity)</h3>
+                <p><strong>Profile:</strong> Moderate frustration and posturing, low oral attack. These dogs often choose not to escalate and may prefer avoidance.</p>
+                <p><strong>Focus:</strong> Teach and reinforce alternative communication signals (e.g., turning away, looking back at the owner). Reward avoidance behaviours to build confidence in safer responses.</p>
+            </div>
+            <div id="cluster-2-info" class="cluster-info">
+                <h3>Cluster 2 (frustration driven)</h3>
+                <p><strong>Profile:</strong> High frustration, moderate-to-high posturing, moderate oral attack. Dogs in this group are more likely to escalate when arousal is high, this may be more likely if they are restrained (e.g., on leash).</p>
+                <p><strong>Focus:</strong> Work on counterconditioning (teaching an alternative response to other dogs) and desensitisation (gradual exposure to reduce arousal). Management of leash pressure and distance is key.</p>
+            </div>
+            <div id="cluster-3-info" class="cluster-info">
+                <h3>Cluster 3</h3>
+                <p><strong>Profile:</strong> Moderate frustration, but high posturing and oral attack. These dogs are more willing to make physical contact, even without high frustration. This may relate to impulsivity, poor risk assessment, or reinforcement history.</p>
+                <p><strong>Focus:</strong> Prioritise risk management (controlled environments, safe handling). Long-term work may include frustration tolerance training, assessing impulsivity, and reshaping responses through consistent reinforcement.</p>
+            </div>
+            <div id="cluster-4-info" class="cluster-info">
+                <h3>Cluster 4 (high risk reactivity)</h3>
+                <p><strong>Profile:</strong> Very high frustration, posturing, and oral attack. These dogs escalate rapidly and represent the highest risk group.</p>
+                <p><strong>Focus:</strong> Immediate risk management is essential (avoiding situations that trigger reactivity, strict safety protocols). Assessment and treatment will require professional input and guidance.</p>
+            </div>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

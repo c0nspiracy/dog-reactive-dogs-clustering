@@ -68,8 +68,21 @@ const MEAN_PC3 = {
 };
 
 const form = document.getElementById('behavior-form');
-const assignedClusterSpan = document.getElementById('assigned-cluster');
 const resetButton = document.getElementById('reset-button');
+
+
+function showClusterInfo(cluster) {
+    // Hide all cluster info sections
+    document.querySelectorAll('.cluster-info').forEach(info => {
+        info.classList.remove('active');
+    });
+
+    // Show the specific cluster info
+    const clusterInfo = document.getElementById(`cluster-${cluster}-info`);
+    if (clusterInfo) {
+        clusterInfo.classList.add('active');
+    }
+}
 
 function resetForm() {
     for (const key in BEHAVIOURS) {
@@ -108,7 +121,7 @@ function calculateCluster() {
         }
     }
 
-    assignedClusterSpan.textContent = assignedCluster;
+    showClusterInfo(assignedCluster);
 }
 
 form.addEventListener('change', calculateCluster);
