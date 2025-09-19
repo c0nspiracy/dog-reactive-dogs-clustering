@@ -78,16 +78,16 @@ body {
 }
 
 .radio-group input[type="radio"]:checked + label {
-    background-color: #007bff;
+    background-color: #0053b3;
     color: #fff;
 }
 
 #reset-button {
     margin-top: 15px;
     padding: 10px 20px;
-    border: 1px solid #dc3545;
+    border: 1px solid #ac1b2b;
     background-color: transparent;
-    color: #dc3545;
+    color: #ac1b2b;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
