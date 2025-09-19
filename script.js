@@ -67,40 +67,54 @@ const MEAN_PC3 = {
     4: 4.1659
 };
 
-const form = document.getElementById('behavior-form');
-const resetButton = document.getElementById('reset-button');
+if (typeof document !== 'undefined') {
+    const form = document.getElementById('behavior-form');
+    const resetButton = document.getElementById('reset-button');
 
 
-function showClusterInfo(cluster) {
-    // Hide all cluster info sections
-    document.querySelectorAll('.cluster-info').forEach(info => {
-        info.classList.remove('active');
-    });
+    function showClusterInfo(cluster) {
+        // Hide all cluster info sections
+        document.querySelectorAll('.cluster-info').forEach(info => {
+            info.classList.remove('active');
+        });
 
-    // Show the specific cluster info
-    const clusterInfo = document.getElementById(`cluster-${cluster}-info`);
-    if (clusterInfo) {
-        clusterInfo.classList.add('active');
-    }
-}
-
-function resetForm() {
-    for (const key in BEHAVIOURS) {
-        const neverRadio = document.getElementById(`${key}-0`);
-        if (neverRadio) {
-            neverRadio.checked = true;
+        // Show the specific cluster info
+        const clusterInfo = document.getElementById(`cluster-${cluster}-info`);
+        if (clusterInfo) {
+            clusterInfo.classList.add('active');
         }
     }
-    calculateCluster();
-}
 
-function calculateCluster() {
-    const input = {};
-    for (const key in BEHAVIOURS) {
-        const selected = document.querySelector(`input[name="${key}"]:checked`);
-        input[key] = selected ? parseInt(selected.value) : 0;
+    function resetForm() {
+        for (const key in BEHAVIOURS) {
+            const neverRadio = document.getElementById(`${key}-0`);
+            if (neverRadio) {
+                neverRadio.checked = true;
+            }
+        }
+        calculateCluster();
     }
 
+    function calculateCluster() {
+        const input = {};
+        for (const key in BEHAVIOURS) {
+            const selected = document.querySelector(`input[name="${key}"]:checked`);
+            input[key] = selected ? parseInt(selected.value) : 0;
+        }
+
+        const assignedCluster = calculateClusterFromData(input);
+        showClusterInfo(assignedCluster);
+    }
+
+    form.addEventListener('change', calculateCluster);
+    resetButton.addEventListener('click', resetForm);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        calculateCluster();
+    });
+}
+
+function calculateClusterFromData(input) {
     const pc1 = Object.keys(input).reduce((sum, key) => sum + (PC1_LOADING[key] * input[key]), 0);
     const pc2 = Object.keys(input).reduce((sum, key) => sum + (PC2_LOADING[key] * input[key]), 0);
     const pc3 = Object.keys(input).reduce((sum, key) => sum + (PC3_LOADING[key] * input[key]), 0);
@@ -121,12 +135,53 @@ function calculateCluster() {
         }
     }
 
-    showClusterInfo(assignedCluster);
+    return assignedCluster;
 }
 
-form.addEventListener('change', calculateCluster);
-resetButton.addEventListener('click', resetForm);
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { calculateClusterFromData, BEHAVIOURS, PC1_LOADING, PC2_LOADING, PC3_LOADING, MEAN_PC1, MEAN_PC2, MEAN_PC3 };
+} else {
+    const form = document.getElementById('behavior-form');
+    const resetButton = document.getElementById('reset-button');
 
-document.addEventListener('DOMContentLoaded', () => {
-    calculateCluster();
-});
+    function showClusterInfo(cluster) {
+        // Hide all cluster info sections
+        document.querySelectorAll('.cluster-info').forEach(info => {
+            info.classList.remove('active');
+        });
+
+        // Show the specific cluster info
+        const clusterInfo = document.getElementById(`cluster-${cluster}-info`);
+        if (clusterInfo) {
+            clusterInfo.classList.add('active');
+        }
+    }
+
+    function resetForm() {
+        for (const key in BEHAVIOURS) {
+            const neverRadio = document.getElementById(`${key}-0`);
+            if (neverRadio) {
+                neverRadio.checked = true;
+            }
+        }
+        calculateCluster();
+    }
+
+    function calculateCluster() {
+        const input = {};
+        for (const key in BEHAVIOURS) {
+            const selected = document.querySelector(`input[name="${key}"]:checked`);
+            input[key] = selected ? parseInt(selected.value) : 0;
+        }
+
+        const assignedCluster = calculateClusterFromData(input);
+        showClusterInfo(assignedCluster);
+    }
+
+    form.addEventListener('change', calculateCluster);
+    resetButton.addEventListener('click', resetForm);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        calculateCluster();
+    });
+}

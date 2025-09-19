@@ -1,0 +1,11 @@
+{
+  "name": "dog-reactive-dog-clustering",
+  "version": "1.0.0",
+  "description": "A simple tool to cluster dog reactivity",
+  "main": "script.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
