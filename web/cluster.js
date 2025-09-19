@@ -1,4 +1,4 @@
-const BEHAVIOURS = {
+export const BEHAVIOURS = {
     nipping: "Nipping",
     biting: "Biting",
     snapping: "Snapping",
@@ -67,40 +67,7 @@ const MEAN_PC3 = {
     4: 4.1659
 };
 
-const form = document.getElementById('behavior-form');
-const resetButton = document.getElementById('reset-button');
-
-
-function showClusterInfo(cluster) {
-    // Hide all cluster info sections
-    document.querySelectorAll('.cluster-info').forEach(info => {
-        info.classList.remove('active');
-    });
-
-    // Show the specific cluster info
-    const clusterInfo = document.getElementById(`cluster-${cluster}-info`);
-    if (clusterInfo) {
-        clusterInfo.classList.add('active');
-    }
-}
-
-function resetForm() {
-    for (const key in BEHAVIOURS) {
-        const neverRadio = document.getElementById(`${key}-0`);
-        if (neverRadio) {
-            neverRadio.checked = true;
-        }
-    }
-    calculateCluster();
-}
-
-function calculateCluster() {
-    const input = {};
-    for (const key in BEHAVIOURS) {
-        const selected = document.querySelector(`input[name="${key}"]:checked`);
-        input[key] = selected ? parseInt(selected.value) : 0;
-    }
-
+export function calculateClusterFromData(input) {
     const pc1 = Object.keys(input).reduce((sum, key) => sum + (PC1_LOADING[key] * input[key]), 0);
     const pc2 = Object.keys(input).reduce((sum, key) => sum + (PC2_LOADING[key] * input[key]), 0);
     const pc3 = Object.keys(input).reduce((sum, key) => sum + (PC3_LOADING[key] * input[key]), 0);
@@ -121,12 +88,7 @@ function calculateCluster() {
         }
     }
 
-    showClusterInfo(assignedCluster);
+    return assignedCluster;
 }
 
-form.addEventListener('change', calculateCluster);
-resetButton.addEventListener('click', resetForm);
 
-document.addEventListener('DOMContentLoaded', () => {
-    calculateCluster();
-});
