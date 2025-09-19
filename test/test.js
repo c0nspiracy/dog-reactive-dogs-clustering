@@ -1,8 +1,8 @@
 import fs from 'fs';
 import assert from 'assert';
-import { calculateClusterFromData } from './cluster.js';
+import { calculateClusterFromData } from '../web/cluster.js';
 
-const csvData = fs.readFileSync('test_data.csv', 'utf8');
+const csvData = fs.readFileSync('test/test_data.csv', 'utf8');
 const rows = csvData.split('\n').slice(1);
 
 let passed = 0;
