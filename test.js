@@ -1,6 +1,6 @@
-const fs = require('fs');
-const assert = require('assert');
-const { calculateClusterFromData } = require('./script.js');
+import fs from 'fs';
+import assert from 'assert';
+import { calculateClusterFromData } from './cluster.js';
 
 const csvData = fs.readFileSync('test_data.csv', 'utf8');
 const rows = csvData.split('\n').slice(1);

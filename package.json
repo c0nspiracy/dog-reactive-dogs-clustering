@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple tool to cluster dog reactivity",
   "main": "script.js",
+  "type": "module",
   "scripts": {
     "test": "node test.js"
   },
