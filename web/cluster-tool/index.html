@@ -20,17 +20,16 @@
 <body>
   <div id="root"></div>
 
-  <!-- React + Babel (for inline JSX transpile in the browser) -->
+  <!-- React -->
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
   <!-- Data + calculations -->
   <script src="js/cluster.js"></script>
   <script src="js/drd-copy.js"></script>
 
-  <!-- UI atoms + the app -->
-  <script src="js/drd-kit.jsx" type="text/babel"></script>
-  <script src="js/app.jsx" type="text/babel"></script>
+  <!-- UI atoms + the app (pre-compiled from JSX at build time) -->
+  <script src="js/compiled/drd-kit.js"></script>
+  <script src="js/compiled/app.js"></script>
 </body>
 </html>
