@@ -1,0 +1,228 @@
+/* DRD Cluster Tool — direction D (editorial).
+   Brand palette anchored on the logo: dark teal ink, cream paper,
+   four pastel cluster colours used as a UI signal system. */
+
+:root {
+  /* Brand */
+  --drd-teal: #143D3E;
+  --drd-cream: #FCF7F1;
+  --drd-paper2: #f3ede4;
+
+  /* Type colours */
+  --drd-ink: #1c2626;
+  --drd-muted: #6b7777;
+  --drd-rule: #d8dcd6;
+
+  /* Cluster colours (logo quadrants) */
+  --drd-c1: #B7C5B0;  --drd-c1-deep: #5e7259;  /* sage */
+  --drd-c2: #F6B99A;  --drd-c2-deep: #c47953;  /* peach */
+  --drd-c3: #B8D3CE;  --drd-c3-deep: #5b8580;  /* mint */
+  --drd-c4: #B8A9C9;  --drd-c4-deep: #76618f;  /* lavender */
+
+  /* Primary accent (alias of teal so JS can read --drd-accent) */
+  --drd-accent: var(--drd-teal);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--drd-cream);
+  color: var(--drd-ink);
+  font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root { width: 100%; height: 100%; }
+
+button { font: inherit; }
+button:focus-visible {
+  outline: 2px solid var(--drd-teal);
+  outline-offset: 2px;
+}
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--drd-teal);
+  outline-offset: 2px;
+}
+
+a { color: var(--drd-teal); }
+
+img { max-width: 100%; height: auto; }
+
+/* ---------------------------------------------------------------------
+   Layout — desktop defaults.
+   These properties used to live as inline styles in app.jsx; they
+   now live here so @media overrides actually win (inline styles
+   beat any stylesheet rule, including !important).
+---------------------------------------------------------------------- */
+
+/* Header */
+.drd-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 14px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.drd-header__brand { display: flex; align-items: center; gap: 12px; }
+.drd-header__brandline { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; }
+.drd-header__nav { display: flex; gap: 24px; justify-self: center; }
+.drd-header__meta { justify-self: end; font-size: 11px; letter-spacing: 1.5px; }
+
+/* Reusable eyebrow */
+.drd-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* About page */
+.drd-about { padding-bottom: 120px; }
+.drd-about__hero-wrap { padding: 80px 40px 56px; max-width: 1100px; margin: 0 auto; }
+.drd-about__hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: center; }
+.drd-about__h1 {
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 0.98;
+  margin: 0 0 28px;
+  letter-spacing: -0.9px;
+}
+.drd-about__hero-art { display: flex; justify-content: center; }
+.drd-about__clusters-wrap { padding: 24px 40px 48px; max-width: 1100px; margin: 0 auto; }
+.drd-about__research-wrap { padding: 0 40px 80px; max-width: 1100px; margin: 0 auto; }
+.drd-about__research { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; margin-top: 32px; }
+
+/* Cluster grid (used on About + Result) */
+.drd-cluster-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+}
+.drd-cluster-grid--result { margin-top: 40px; margin-bottom: 48px; }
+.drd-cluster-grid__card {
+  padding: 24px 20px 28px;
+  position: relative;
+}
+.drd-cluster-grid--result .drd-cluster-grid__card { padding: 20px 20px 24px; }
+
+/* Assess page */
+.drd-assess { padding: 56px 40px 120px; max-width: 720px; margin: 0 auto; }
+.drd-assess__h2 {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.05;
+  margin: 0 0 12px;
+  letter-spacing: -0.5px;
+}
+.drd-assess__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0;
+}
+.drd-assess__label { font-size: 15px; }
+.drd-assess__segs { display: flex; gap: 4px; }
+
+/* Result page */
+.drd-result { padding: 56px 40px 96px; max-width: 1100px; margin: 0 auto; }
+.drd-result__h1 {
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 1;
+  margin: 0 0 8px;
+  letter-spacing: -0.8px;
+}
+.drd-result__split { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; }
+.drd-result__profile { padding: 28px 32px; margin-bottom: 32px; }
+.drd-result__bar {
+  display: grid;
+  grid-template-columns: 180px 1fr 50px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+}
+.drd-result__aside { position: sticky; top: 100px; align-self: start; }
+.drd-result__aside-card { padding: 24px; }
+.drd-result__footer { margin-top: 48px; display: flex; gap: 12px; }
+
+/* ---------------------------------------------------------------------
+   Responsive — single column at 860px, compact phone at 520px.
+   All inline-style layout has been removed from app.jsx so these
+   overrides actually win (no !important needed).
+---------------------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  /* Header — drop meta, tighten gutters, two-column grid */
+  .drd-header { padding: 12px 20px; gap: 12px; grid-template-columns: 1fr auto; }
+  .drd-header__meta { display: none; }
+  .drd-header__brandline { font-size: 11px; }
+  .drd-header__nav { gap: 16px; }
+
+  /* About — single column hero, art above text, smaller H1 */
+  .drd-about__hero-wrap { padding: 40px 20px 32px; }
+  .drd-about__hero { grid-template-columns: 1fr; gap: 28px; }
+  .drd-about__hero-art { order: -1; max-width: 240px; margin: 0 auto; }
+  .drd-about__h1 { font-size: 44px; line-height: 1; letter-spacing: -0.5px; }
+
+  .drd-about__clusters-wrap { padding: 16px 20px 32px; }
+  .drd-cluster-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .drd-about__research-wrap { padding: 0 20px 60px; }
+  .drd-about__research { grid-template-columns: 1fr; gap: 16px; }
+
+  /* Assess — keep two-column row, shrink padding */
+  .drd-assess { padding: 36px 20px 80px; }
+  .drd-assess__h2 { font-size: 30px; }
+
+  /* Result — collapse split, drop sticky */
+  .drd-result { padding: 36px 20px 80px; }
+  .drd-result__h1 { font-size: 42px; letter-spacing: -0.5px; }
+  .drd-result__split { grid-template-columns: 1fr; gap: 32px; }
+  .drd-result__aside { position: static; }
+  .drd-result__profile { padding: 22px 20px; }
+  .drd-result__bar { grid-template-columns: 130px 1fr 44px; gap: 12px; }
+}
+
+@media (max-width: 520px) {
+  /* Header — logo only */
+  .drd-header { padding: 10px 16px; }
+  .drd-header__brandline { display: none; }
+  .drd-header__nav { gap: 10px; }
+  .drd-header__nav button { font-size: 10px; letter-spacing: 1.5px; }
+
+  /* About */
+  .drd-about__hero-wrap { padding: 28px 16px 24px; }
+  .drd-about__h1 { font-size: 34px; }
+  .drd-about__clusters-wrap { padding: 12px 16px 24px; }
+  .drd-cluster-grid { grid-template-columns: 1fr; }
+  .drd-about__research-wrap { padding: 0 16px 48px; }
+
+  /* Assess — stack each row, full-width segmented control */
+  .drd-assess { padding: 28px 16px 64px; }
+  .drd-assess__h2 { font-size: 26px; }
+  .drd-assess__row { grid-template-columns: 1fr; gap: 10px; padding: 14px 0; }
+  .drd-assess__segs { width: 100%; }
+  .drd-assess__segs button { flex: 1 1 0; min-width: 0; padding: 10px 8px; }
+
+  /* Result — stack bars (label/% above, track below) */
+  .drd-result { padding: 28px 16px 64px; }
+  .drd-result__h1 { font-size: 34px; }
+  .drd-result__profile { padding: 18px 16px; }
+  .drd-result__bar {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "label pct" "track track";
+    gap: 4px 12px;
+  }
+  .drd-result__bar > :nth-child(1) { grid-area: label; }
+  .drd-result__bar > :nth-child(2) { grid-area: track; margin-top: 6px; }
+  .drd-result__bar > :nth-child(3) { grid-area: pct; }
+
+  .drd-result__footer { flex-wrap: wrap; }
+  .drd-result__footer button { flex: 1 1 auto; }
+}

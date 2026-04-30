@@ -1,0 +1,10 @@
+{
+  "name": "drd-cluster-tool",
+  "private": true,
+  "scripts": {
+    "build": "esbuild js/drd-kit.jsx js/app.jsx --outdir=js/compiled --platform=browser"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

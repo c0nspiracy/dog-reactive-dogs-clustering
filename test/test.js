@@ -1,6 +1,21 @@
 import fs from 'fs';
+import vm from 'vm';
+import path from 'path';
 import assert from 'assert';
-import { calculateClusterFromData } from '../web/cluster-tool/cluster.js';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// The production cluster.js attaches its API to `window` so it can be loaded
+// via a plain <script> tag in the browser. Replicate that environment here.
+const clusterCode = fs.readFileSync(
+    path.join(__dirname, '../web/cluster-tool/js/cluster.js'),
+    'utf8'
+);
+const sandbox = { window: {} };
+vm.createContext(sandbox);
+vm.runInContext(clusterCode, sandbox);
+const { drdCalculate } = sandbox.window;
 
 const csvData = fs.readFileSync('test/test_data.csv', 'utf8');
 const rows = csvData.split('\n').slice(1);
@@ -32,7 +47,7 @@ for (const row of rows) {
         input[header[i]] = parseInt(values[i + 1]);
     }
 
-    const actualCluster = calculateClusterFromData(input);
+    const actualCluster = drdCalculate(input).cluster;
 
     try {
         assert.strictEqual(actualCluster, expectedCluster);
