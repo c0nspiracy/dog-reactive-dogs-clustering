@@ -103,7 +103,10 @@
                 What kind of <em style={{ fontStyle: 'italic' }}>reactive dog</em> do you live with?
               </h1>
               <p style={{ fontSize: 17, lineHeight: 1.55, margin: '0 0 18px', maxWidth: 480 }}>
-                {c.intro1}
+                {(() => {
+                  const [before, after] = c.intro1.split('Dr Himara Van Haevermaet');
+                  return <>{before}<a href="https://behaviour.services/" target="_blank" rel="noopener">Dr Himara Van Haevermaet</a>{after}</>;
+                })()}
               </p>
               <p style={{ fontSize: 13, lineHeight: 1.5, margin: '0 0 32px', maxWidth: 480, color: muted }}>
                 {c.intro2}
