@@ -25,13 +25,6 @@
     3: 'Impulsive escalators',
     4: 'Risky rapid escalators',
   };
-  const SHORT_BLURB = {
-    1: 'Vocal but rarely physical.',
-    2: 'Predictable triggers, vocal escalation.',
-    3: 'Quick to escalate, harder to read.',
-    4: 'Cue-to-contact threshold is low.',
-  };
-
   const SERIF = '"Instrument Serif", Georgia, serif';
 
   // -- Logo --
@@ -157,7 +150,6 @@
                   <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 6, background: CLUSTER_FILL[n] }} />
                   <div style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 36, color: CLUSTER_DEEP[n], margin: '20px 0 6px', lineHeight: 1 }}>{n}</div>
                   <div style={{ fontSize: 14, fontWeight: 500, lineHeight: 1.3, marginBottom: 8 }}>{SHORT_NAME[n]}</div>
-                  <div style={{ fontSize: 13, lineHeight: 1.45, color: muted }}>{SHORT_BLURB[n]}</div>
                 </div>
               ))}
             </div>
@@ -286,7 +278,6 @@
                   {isActive && <span style={{ fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', color: deep, fontWeight: 600 }}>Your dog</span>}
                 </div>
                 <div style={{ fontSize: 14, fontWeight: 500, lineHeight: 1.3, marginBottom: 6, color: ink }}>{SHORT_NAME[n]}</div>
-                <div style={{ fontSize: 12, lineHeight: 1.45, color: isActive ? ink : muted }}>{SHORT_BLURB[n]}</div>
               </div>
             );
           })}
