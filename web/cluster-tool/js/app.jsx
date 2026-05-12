@@ -237,14 +237,12 @@
   }
 
   // -- Page 3 — Result --
-  function ResultPage({ input, result, onRevise, onRestart }) {
-    const teal = T.teal(), cream = T.cream(), muted = T.muted(), rule = T.rule(), ink = T.ink(), paper2 = T.paper2();
+  function ResultPage({ result, onRevise, onRestart }) {
+    const teal = T.teal(), cream = T.cream(), muted = T.muted(), rule = T.rule(), ink = T.ink();
     const fill = CLUSTER_FILL[result.cluster];
     const deep = CLUSTER_DEEP[result.cluster];
     const c = window.DRD_COPY.clusters[result.cluster];
     const headingNoPrefix = c.heading.replace(/^Cluster \d+: /, '');
-
-    const groupScore = (keys) => keys.reduce((s, k) => s + input[k], 0) / (keys.length * 2);
 
     return (
       <section className="drd-result">
@@ -291,23 +289,6 @@
               <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 28, letterSpacing: -0.3, margin: '0 0 16px', color: teal }}>About this cluster</h2>
               <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 14px' }}><strong>Profile:</strong> {c.profile}</p>
               <p style={{ fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>Focus:</strong> {c.focus}</p>
-            </div>
-
-            {/* Behaviour readout */}
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 26, letterSpacing: -0.3, margin: '0 0 18px', color: teal }}>What you reported</h2>
-            <div style={{ borderTop: `1px solid ${rule}` }}>
-              {Object.entries(window.DRD_BEHAVIOUR_GROUPS).map(([gk, group]) => {
-                const pct = groupScore(group.keys);
-                return (
-                  <div key={gk} className="drd-result__bar" style={{ borderBottom: `1px solid ${rule}` }}>
-                    <div style={{ fontSize: 14 }}>{group.label}</div>
-                    <div style={{ height: 6, background: paper2, position: 'relative' }}>
-                      <div style={{ position: 'absolute', inset: 0, width: `${pct * 100}%`, background: deep, transition: 'width .5s' }} />
-                    </div>
-                    <div style={{ fontSize: 12, color: muted, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{Math.round(pct * 100)}%</div>
-                  </div>
-                );
-              })}
             </div>
 
             {/* All four clusters expanded for context */}
@@ -366,7 +347,6 @@
         {page === 0 && <AboutPage ack={ack} onAck={setAck} onBegin={() => ack && setPage(1)} />}
         {page === 1 && <AssessPage input={input} setBeh={setBeh} onBack={() => setPage(0)} onNext={() => setPage(2)} />}
         {page === 2 && <ResultPage
-          input={input}
           result={result}
           onRevise={() => setPage(1)}
           onRestart={() => { setInput(window.drdEmptyInput()); setAck(false); setPage(0); }}
